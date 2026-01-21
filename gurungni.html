@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(180deg, #ff9acb, #ffd1e8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .heart-container {
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+      z-index: 5;
+    }
+
+    .heart {
+      width: 150px;
+      height: 150px;
+      background: red;
+      position: relative;
+      transform: rotate(-45deg);
+      animation: pulse 1.5s infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 150px;
+      height: 150px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before { top: -75px; left: 0; }
+    .heart::after { left: 75px; top: 0; }
+
+    @keyframes pulse {
+      0% { transform: rotate(-45deg) scale(1); }
+      50% { transform: rotate(-45deg) scale(1.15); }
+      100% { transform: rotate(-45deg) scale(1); }
+    }
+
+    .click-text {
+      position: absolute;
+      top: 200px;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .heart-text {
+      position: absolute;
+      top: -35px;
+      transform: rotate(45deg);
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .content {
+      display: none;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,240,248,0.98));
+      padding: 35px;
+      border-radius: 30px;
+      max-width: 900px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow:
+        0 20px 45px rgba(255, 105, 180, 0.35),
+        inset 0 0 25px rgba(255, 182, 193, 0.45);
+      animation: fadeIn 1.2s ease;
+      z-index: 5;
+      backdrop-filter: blur(6px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .photos {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .photos img {
+      width: 160px;
+      height: 160px;
+      border-radius: 25px;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transform: scale(1);
+    }
+
+    .photo-button {
+      display: block;
+      margin: 10px auto 30px;
+      padding: 10px 20px;
+      background: #ff6aa5;
+      border: none;
+      border-radius: 20px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-button:hover {
+      transform: scale(1.05);
+    }
+
+    .message {
+      color: #4a0033;
+      line-height: 1.9;
+      font-size: 15.5px;
+      background: rgba(255, 220, 235, 0.45);
+      padding: 25px;
+      border-radius: 22px;
+      box-shadow:
+        inset 0 0 20px rgba(255, 150, 200, 0.4);
+    }
+
+    .floating-heart, .floating-flower, .floating-rose {
+      position: absolute;
+      animation: float 7s linear infinite;
+      opacity: 0.85;
+      z-index: 1;
+    }
+
+    .floating-heart { font-size: 22px; }
+    .floating-flower { font-size: 20px; }
+    .floating-rose { font-size: 26px; color: #ff2f6d; }
+
+    @keyframes float {
+      from { transform: translateY(120vh) rotate(0deg); }
+      to { transform: translateY(-20vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart-container" onclick="openHeart()">
+    <div class="heart"><span class="heart-text">Your Baby 💕</span></div>
+    <div class="click-text">Click the Heart ❤️</div>
+  </div>
+
+  <div class="content" id="content">
+    <!-- Top image section -->
+    <div class="photos">
+      <img src="image.jpg" alt="Memory 1">
+      <img src="image1.jpg" alt="Memory 2">
+    </div>
+
+  
+    
+    <button class="photo-button">See Memories 💖</button>
+
+    
+    <button class="photo-button">More Memories 💕</button>
+
+    <div class="message" id="message"></div>
+      <div class="photos">
+      <img src="image2.jpg" alt="Me">
+      <img src="iamge3.jpg" alt="You">
+    </div>
+
+  </div>
+
+<script>
+    const fullText = `Hey my love, I am really in love with you. I don’t say it often, but I am the luckiest person to have you as my life partner. I am grateful to have you as my wife. You are everything to me, my love. You are my supporter who guides me and helps push me every day for a better future for both of us. You are everything I have dreamed of. You are perfect, my love. You love me as I am. You take care of me like a brother, worry for me like a mother, care for me like a father, and love and pamper me like your own baby.
+
+But I also know that I hurt you sometimes, my love, and I really don’t mean to do that. I just want to love you beyond anything. I get jealous, I get angry, not because I don’t love you, but because I care for you, my love. You are my everything, my love. I can’t bear to lose you, my loving wife.
+
+Thaxa ma kati sano bachaa jasto hunxa timi sanga huda. Ma timi sanga huda baby jasto hunxa. Thaxa maya ma kati safe ra loved feel hunxa ni. Thaxa mero bachaa ma kati nidra pani lagxa, ma esto ananda hunxa ani malai sutna man lagxa timro bubu ma sano bachaa jasari mero bachaa.
+
+Timi lai na dekheko 7 June ko bachaa ta din bhari rahekai hunxa, you June chai timi sanga bitauxu maya. Sukha dukha j hos, timi sanga katxau. Paxi timi sangai bihe garxu. Timi sanga dekheko sabai sapana haru timi sangai pura garxu. Paxi gayera timi ra ma, hamro auta xori hunxa, timi jasari ramri ra ris bhako dalli.
+
+Paila ma dherai paisa kamauxu ani timi lai timro ghar ma timro haat magna auxu, mero sanu. Ani timi ra ma bhayera auta naya ghar banaune, mero sanu. Ani timi, ma ani hamri xori basne, hehehe.
+
+Yatra kati lamo xa thaxaina malai mero maya, tara timi sangai bitauxu. Maya, timi lai jaila sath dinxu. Kailai pani aklai huna dinna. Maya, jaila timro sath ma hunxu, timro har ek kura ma sath dinxu. Timi lai jaila protect garxu, mero bachaa. Timi lai kailai afu bata tada huna dinna, mero maya.
+
+Timro sabai problem haru tada garxu ta bhanna sakdina maya, tara har ek problem ma timro sath ma jaila hunxu. Timro lagi, mero maya, kailai ma bata tada huna dinna, mero bachaa. Timi jati risaye pani timi lai fakauxu, mero bachaa.
+
+Paxi timi sanga bihe garna pani xa ni, mero bachaa. Mero maya, timro sano baby huna xa. Mero maya, ma timro jaila ko lagi timro sano naughty, pyaro, good boy banera basne, mero maya, hehehehe.`;
+
+    function startTyping() {
+      const el = document.getElementById('message');
+      el.innerHTML = '';
+      const paragraphs = fullText.replace(/\r\n/g,'\n').split(/\n\s*\n/);
+      let pIndex = 0;
+
+      function typeParagraph() {
+        if (pIndex >= paragraphs.length) return;
+        let i = 0;
+        const text = paragraphs[pIndex];
+        const timer = setInterval(() => {
+          el.innerHTML += text[i] || '';
+          el.scrollTop = el.scrollHeight;
+          i++;
+          if (i >= text.length) {
+            clearInterval(timer);
+            el.innerHTML += '<br><br>';
+            pIndex++;
+            setTimeout(typeParagraph, 800);
+          }
+        }, 10);
+      }
+      typeParagraph();
+    }
+
+    function openHeart() {
+      document.querySelector('.heart-container').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+      startTyping();
+    }
+
+    function createFloating(symbol, className, duration) {
+      const el = document.createElement('div');
+      el.className = className;
+      el.textContent = symbol;
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.animationDuration = duration + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), duration * 1000);
+    }
+
+    setInterval(() => createFloating('❤️','floating-heart',7),350);
+    setInterval(() => createFloating('🌸','floating-flower',8),700);
+    setInterval(() => createFloating('🌹','floating-rose',9),500);
+  </script>
+</body>
+</html>
